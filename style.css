@@ -34,7 +34,7 @@ header {
 
 /* Individual Sections */
 .task-input-section, .inprogress-section, .removed-section {
-  background: white;
+  background: rgb(83, 83, 83);
   padding: 20px;
   border-radius: 10px;
   width: 32%;
@@ -75,7 +75,7 @@ ul {
 }
 
 li {
-  background: rgb(158, 158, 158);
+  background: rgb(198, 198, 198);
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -148,4 +148,39 @@ li {
 
 #clear-removed:hover {
   background-color: #c82333;
+}
+/* General Task Box Style */
+.task-box {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* To-Do Task Box */
+.task-box.todo {
+  background: #ffffff; 
+  border-color: #000000; 
+  color: #000000;
+}
+
+/* In Progress Task Box */
+.task-box.inprogress {
+  background: #fff3cd; 
+  border-color: #ffc107; 
+  color: #000000;
+}
+
+/* Completed Task Box */
+.task-box.completed {
+  background: #d4edda; 
+  border-color: #28a745; 
+  color: #000000;
+  text-decoration: line-through;
 }

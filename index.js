@@ -4,6 +4,7 @@ document.getElementById('add-task').addEventListener('click', function() {
     
     if (taskText !== "") {
         let li = document.createElement('li');
+        li.classList.add('task-box', 'todo'); // Default to To-Do class
 
         let taskSpan = document.createElement('span');
         taskSpan.textContent = taskText;
@@ -31,44 +32,39 @@ document.getElementById('add-task').addEventListener('click', function() {
         document.getElementById('task-list').appendChild(li);
         taskInput.value = "";
 
-        saveTasks(); // Save tasks after adding a new one
+        saveTasks(); // Save the updated tasks
     }
 });
+
 
 // Function to move tasks to "In Progress"
 function moveToInProgress(task, taskElement) {
     let inProgressList = document.getElementById('inprogress-task-list');
 
-    let inProgressItem = document.createElement('li');
-    inProgressItem.textContent = task;
+    taskElement.classList.remove('todo'); // Remove To-Do class
+    taskElement.classList.add('inprogress'); // Add In Progress class
 
-    // Create "Complete" button for In Progress tasks
-    let completeButton = document.createElement('button');
-    completeButton.textContent = 'Complete';
-    completeButton.classList.add('complete-btn');
-    completeButton.addEventListener('click', function() {
-        moveToCompleted(task, inProgressItem);
-    });
+    // Remove "In Progress" button and keep "Complete" button
+    taskElement.querySelector('.inprogress-btn').remove();
 
-    inProgressItem.appendChild(completeButton);
-    inProgressList.appendChild(inProgressItem);
-
-    taskElement.remove();
-    saveTasks(); // Save tasks after moving to In Progress
+    inProgressList.appendChild(taskElement);
+    saveTasks(); // Save the updated tasks
 }
 
 // Function to move tasks to "Completed"
 function moveToCompleted(task, taskElement) {
     let removedList = document.getElementById('removed-task-list');
 
-    let removedItem = document.createElement('li');
-    removedItem.textContent = task;
+    taskElement.classList.remove('inprogress'); // Remove In Progress class
+    taskElement.classList.add('completed'); // Add Completed class
 
-    removedList.appendChild(removedItem);
+    // Remove all buttons once completed
+    taskElement.querySelectorAll('button').forEach(btn => btn.remove());
 
-    taskElement.remove();
-    saveTasks(); // Save tasks after moving to Completed
+    removedList.appendChild(taskElement);
+    saveTasks(); // Save the updated tasks
 }
+
 
 // Clear completed tasks
 document.getElementById('clear-removed').addEventListener('click', function() {
