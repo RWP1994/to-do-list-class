@@ -7,14 +7,14 @@
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #000000;
   text-align: center;
   padding: 20px;
 }
 
 /* Header */
 header {
-  background-color: #007bff;
+  background-color: #3f007e;
   color: white;
   padding: 20px;
   font-size: 24px;
@@ -75,7 +75,7 @@ ul {
 }
 
 li {
-  background: #fff;
+  background: rgb(158, 158, 158);
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -88,13 +88,13 @@ li {
 /* Completed Tasks */
 .completed {
   text-decoration: line-through;
-  color: gray;
+  color: rgb(8, 0, 243);
 }
 
 /* Buttons */
 .inprogress-btn {
-  background-color: #007bff;
-  color: white;
+  background-color: #ffc107;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -107,8 +107,8 @@ li {
 }
 
 .complete-btn {
-  background-color: #ffc107;
-  color: black;
+  background-color: #0900ba;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -117,7 +117,7 @@ li {
 }
 
 .complete-btn:hover {
-  background-color: #e0a800;
+  background-color: #0900ba;
 }
 
 .delete-btn {
