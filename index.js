@@ -36,10 +36,21 @@ document.getElementById('add-task').addEventListener('click', function() {
 
 // Function to log removed tasks
 function logRemovedTask(task) {
-    let removedList = document.getElementById('removed-tasks');
+    let removedList = document.getElementById('removed-task-list');
 
     let removedItem = document.createElement('li');
     removedItem.textContent = task;
 
     removedList.appendChild(removedItem);
 }
+
+// Add "Clear Removed Tasks" Button
+let clearButton = document.createElement('button');
+clearButton.textContent = "Clear All Removed Tasks";
+clearButton.classList.add('clear-btn');
+clearButton.addEventListener('click', function() {
+    document.getElementById('removed-task-list').innerHTML = "";
+});
+
+// Append clear button to the removed-tasks section
+document.getElementById('removed-tasks').appendChild(clearButton);
