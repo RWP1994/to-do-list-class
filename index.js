@@ -22,22 +22,12 @@ document.getElementById('add-task').addEventListener('click', function() {
         completeButton.textContent = 'Complete';
         completeButton.classList.add('complete-btn');
         completeButton.addEventListener('click', function() {
-            taskSpan.classList.toggle('completed');
-        });
-
-        // Create "Remove" Button
-        let removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
-        removeButton.classList.add('delete-btn');
-        removeButton.addEventListener('click', function() {
-            logRemovedTask(taskText);
-            li.remove();
+            moveToCompleted(taskText, li);
         });
 
         li.appendChild(taskSpan);
         li.appendChild(inProgressButton);
         li.appendChild(completeButton);
-        li.appendChild(removeButton);
         document.getElementById('task-list').appendChild(li);
         taskInput.value = "";
     }
@@ -50,12 +40,12 @@ function moveToInProgress(task, taskElement) {
     let inProgressItem = document.createElement('li');
     inProgressItem.textContent = task;
 
-    // Create "Mark Complete" button for In Progress tasks
+    // Create "Complete" button for In Progress tasks
     let completeButton = document.createElement('button');
     completeButton.textContent = 'Complete';
     completeButton.classList.add('complete-btn');
     completeButton.addEventListener('click', function() {
-        inProgressItem.classList.toggle('completed');
+        moveToCompleted(task, inProgressItem);
     });
 
     inProgressItem.appendChild(completeButton);
@@ -65,12 +55,19 @@ function moveToInProgress(task, taskElement) {
     taskElement.remove();
 }
 
-// Function to log removed tasks
-function logRemovedTask(task) {
+// Function to move tasks to "Completed"
+function moveToCompleted(task, taskElement) {
     let removedList = document.getElementById('removed-task-list');
 
     let removedItem = document.createElement('li');
     removedItem.textContent = task;
 
     removedList.appendChild(removedItem);
+
+    taskElement.remove();
 }
+
+// Clear completed tasks
+document.getElementById('clear-removed').addEventListener('click', function() {
+    document.getElementById('removed-task-list').innerHTML = "";
+});
