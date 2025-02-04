@@ -198,16 +198,4 @@ li {
 .delete-btn:hover {
   background-color: darkred;
 }
-/* Footer Styling */
-footer {
-  background-color: #3f007e;  /* Match the header color */
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  margin-top: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
+
