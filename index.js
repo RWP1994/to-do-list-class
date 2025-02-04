@@ -26,9 +26,19 @@ document.getElementById('add-task').addEventListener('click', function() {
             moveToCompleted(taskText, li);
         });
 
+        // Create "Remove" Button
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Remove';
+        deleteButton.classList.add('delete-btn');
+        deleteButton.addEventListener('click', function() {
+            removeTask(li);
+        });
+
+        // Append buttons and text to list item
         li.appendChild(taskSpan);
         li.appendChild(inProgressButton);
         li.appendChild(completeButton);
+        li.appendChild(deleteButton);
         document.getElementById('task-list').appendChild(li);
         taskInput.value = "";
 
@@ -41,30 +51,35 @@ document.getElementById('add-task').addEventListener('click', function() {
 function moveToInProgress(task, taskElement) {
     let inProgressList = document.getElementById('inprogress-task-list');
 
-    taskElement.classList.remove('todo'); // Remove To-Do class
-    taskElement.classList.add('inprogress'); // Add In Progress class
+    taskElement.classList.remove('todo');
+    taskElement.classList.add('inprogress');
 
-    // Remove "In Progress" button and keep "Complete" button
+    // Remove "In Progress" button since it's already in progress
     taskElement.querySelector('.inprogress-btn').remove();
 
+    // Ensure remove button is still available
     inProgressList.appendChild(taskElement);
-    saveTasks(); // Save the updated tasks
+    saveTasks();
 }
+
 
 // Function to move tasks to "Completed"
 function moveToCompleted(task, taskElement) {
     let removedList = document.getElementById('removed-task-list');
 
-    taskElement.classList.remove('inprogress'); // Remove In Progress class
-    taskElement.classList.add('completed'); // Add Completed class
+    taskElement.classList.remove('inprogress');
+    taskElement.classList.add('completed');
 
-    // Remove all buttons once completed
-    taskElement.querySelectorAll('button').forEach(btn => btn.remove());
+    // Remove all buttons except "Remove"
+    taskElement.querySelectorAll('button').forEach(btn => {
+        if (!btn.classList.contains('delete-btn')) {
+            btn.remove();
+        }
+    });
 
     removedList.appendChild(taskElement);
-    saveTasks(); // Save the updated tasks
+    saveTasks();
 }
-
 
 // Clear completed tasks
 document.getElementById('clear-removed').addEventListener('click', function() {
@@ -137,6 +152,13 @@ function loadTasks() {
         document.getElementById('removed-task-list').appendChild(li);
     });
 }
+function removeTask(taskElement) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        taskElement.remove();
+        saveTasks(); // Save the updated list after deletion
+    }
+}
+
 
 // Load tasks on page load
 window.addEventListener('load', loadTasks);

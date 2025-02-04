@@ -184,3 +184,17 @@ li {
   color: #000000;
   text-decoration: line-through;
 }
+/* Remove Button */
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
