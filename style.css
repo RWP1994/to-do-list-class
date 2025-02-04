@@ -121,7 +121,7 @@ header {
 /* inprogress button */
 .inprogress-btn {
   background-color: #045cea;
-  color: black;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
