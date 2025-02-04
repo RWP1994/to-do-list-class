@@ -7,86 +7,74 @@
 }
 
 body {
-  background-color: #000000;
-  display: grid;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  background-color: #f4f4f4;
+  text-align: center;
   padding: 20px;
 }
 
 /* Header */
 header {
-  background-color: #490cac;
+  background-color: #007bff;
   color: white;
-  text-align: center;
   padding: 20px;
-  width: 100%;
+  font-size: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* To-Do App */
-#todo-app {
+/* Flexbox Layout */
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+/* Individual Sections */
+.task-input-section, .inprogress-section, .removed-section {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 400px;
+  width: 32%;
+  min-height: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 20px;
 }
 
 /* Input and Button */
 #task-input {
-  width: 75%;
+  width: 80%;
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
 #add-task {
   padding: 10px 15px;
-  background-color: #029a25;
+  background-color: #28a745;
   color: white;
-  border: 2px solid rgb(0, 0, 0);
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 5px;
 }
 
 #add-task:hover {
-  background-color: #03a125;
+  background-color: #218838;
 }
 
 /* Task List */
-#task-list {
+ul {
   list-style-type: none;
-  margin-top: 15px;
   padding: 0;
+  margin-top: 10px;
 }
 
-#task-list li {
-  background: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-}
-/* Task List */
-#task-list, #inprogress-task-list, #removed-task-list {
-  list-style-type: none;
-  margin-top: 15px;
-  padding: 0;
-}
-
-#task-list li, #inprogress-task-list li {
+li {
   background: #fff;
   padding: 10px;
   border-radius: 5px;
@@ -100,10 +88,24 @@ header {
 /* Completed Tasks */
 .completed {
   text-decoration: line-through;
-  color: rgb(55, 174, 0);
+  color: gray;
 }
 
 /* Buttons */
+.inprogress-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.inprogress-btn:hover {
+  background-color: #0056b3;
+}
+
 .complete-btn {
   background-color: #ffc107;
   color: black;
@@ -118,24 +120,9 @@ header {
   background-color: #e0a800;
 }
 
-/* inprogress button */
-.inprogress-btn {
-  background-color: #045cea;
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 5px;
-}
-
-.inprogress-btn:hover {
-  background-color: #00076b;
-}
-
 .delete-btn {
   background-color: red;
-  color: rgb(0, 0, 0);
+  color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -147,25 +134,8 @@ header {
   background-color: darkred;
 }
 
-/* Removed Tasks Section */
-#removed-tasks {
-  margin-top: 20px;
-  padding: 10px;
-  background: #fff;
-  border-radius: 5px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-#removed-tasks h3 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 /* Clear Button */
-.clear-btn {
+#clear-removed {
   margin-top: 10px;
   padding: 8px 15px;
   background-color: #dc3545;
@@ -176,6 +146,6 @@ header {
   font-size: 14px;
 }
 
-.clear-btn:hover {
+#clear-removed:hover {
   background-color: #c82333;
 }
